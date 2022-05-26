@@ -1,0 +1,32 @@
+class Solution {
+    public boolean isValid(String s) {
+        Stack<Character> str = new Stack<>();
+        char[] ch = s.toCharArray();
+        for(char c:ch){
+            if(c=='('||c=='{'||c=='['){
+                str.push(c);
+            }
+            else{
+                if(str.empty()){
+                    return false;
+                }
+                else if(str.peek()==invertChar(c)){
+                    str.pop();
+                }
+                else{
+                    return false;
+                }
+            }
+        }
+        return str.size()==0;
+    }
+    char invertChar(char c){
+        if(c==')'){
+            return '(';
+        }
+        if(c=='}'){
+            return '{';
+        }
+            return '[';        
+    }
+}
