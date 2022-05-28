@@ -1,0 +1,23 @@
+class Solution {
+    public boolean validPalindrome(String s) {
+        int n = s.length();
+        int f = 0;
+        int e = n-1;
+        while(f<e){
+            if(s.charAt(f)!=s.charAt(e)){
+                return (ispalin(s,f+1,e)||ispalin(s,f,e-1));
+            }
+            f++;
+            e--;
+        }
+        return true;
+    }
+    boolean ispalin(String s , int f , int e){
+        while(f<e){
+            if(s.charAt(f)!=s.charAt(e)) return false;
+            f++;
+            e--;
+        }
+        return true;
+    }
+}
