@@ -1,0 +1,17 @@
+class Solution {
+    public String reverseWords(String s) {
+        StringBuilder reversed = new StringBuilder();
+        int fir = 0 , las = 0 , wordCount = 0;
+        for(int i=s.length()-1;i>=0;i--){
+            if(s.charAt(i)!=' '){
+                las = i;
+                while(i>0 && s.charAt(i-1)!=' ') i--;
+                fir = i;
+                if(wordCount>0) reversed.append(" ");
+                reversed.append(s.substring(fir,las+1));
+                wordCount++;
+            }
+        }
+        return reversed.toString();
+    }
+}
