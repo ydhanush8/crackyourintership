@@ -1,0 +1,26 @@
+class Solution {
+    public List<Integer> spiralOrder(int[][] matrix) {
+        int m = matrix.length;
+        int n = matrix[0].length;
+        int[][] directions = new int[][]{{0, 1}, {1, 0}, {0, -1},  {-1, 0}};
+        int count = 1;
+        int d = 0;
+        boolean[][] grid = new boolean[m][n];
+        int r = 0;
+        int c = 0;
+        List<Integer> result = new ArrayList<>();
+        while (count <= m * n) {
+            grid[r][c] = true;
+            result.add(matrix[r][c]);
+            int newR = r + directions[d][0];
+            int newC = c + directions[d][1];
+            if (newR < 0 || newR == m || newC < 0 || newC == n || grid[newR][newC] != false) {
+                d = (d + 1)%4;
+            }
+            r += directions[d][0];
+            c += directions[d][1];
+            count++;
+        }
+        return result;
+    }
+}
