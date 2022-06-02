@@ -1,0 +1,31 @@
+class Solution {
+    public void rotate(int[][] matrix) {
+        if(matrix.length<=1)
+            return;
+        transverse(matrix);
+        exchangeColumns(matrix);
+    }
+    void transverse(int[][] matrix){
+        int p = 0;
+        while(p < matrix.length){
+            for(int i = p, j = p; i < matrix.length; i++,j++){
+                int t = matrix[i][p];
+                matrix[i][p] = matrix[p][j];
+                matrix[p][j] = t;
+            }
+            p++;
+        }
+    }
+    void exchangeColumns(int[][] matrix){   
+        int c1 = 0, c2 = matrix.length - 1;
+        while(c1 < c2){
+            for(int i = 0; i < matrix.length; i++){
+                int t = matrix[i][c1];
+                matrix[i][c1] = matrix[i][c2];
+                matrix[i][c2] = t;
+            }
+            c1++;
+            c2--;
+        }
+    }
+}
